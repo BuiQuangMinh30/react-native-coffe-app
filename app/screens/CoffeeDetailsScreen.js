@@ -19,11 +19,17 @@ const { height, width } = Dimensions.get("window");
 
 const sizes = ["S", "M", "L"];
 
-const CoffeeDetailsScreen = ({ coffee }) => {
+const CoffeeDetailsScreen = ({ route, navigation }) => {
+  const { coffee } = route.params;
   const [activeSize, setActiveSize] = useState(null);
   return (
     <>
-      <ScrollView>
+      <ScrollView
+        style={{
+          flex: 1,
+          backgroundColor: colors.dark,
+        }}
+      >
         <SafeAreaView>
           <ImageBackground
             source={coffee.image}
@@ -36,6 +42,7 @@ const CoffeeDetailsScreen = ({ coffee }) => {
               borderRadius: SPACING * 3,
             }}
           >
+            {/* action header image  */}
             <View
               style={{
                 flexDirection: "row",
@@ -43,6 +50,7 @@ const CoffeeDetailsScreen = ({ coffee }) => {
                 padding: SPACING * 2,
               }}
             >
+              {/* icon back  */}
               <TouchableOpacity
                 style={{
                   backgroundColor: colors.dark,
@@ -56,6 +64,7 @@ const CoffeeDetailsScreen = ({ coffee }) => {
                   size={SPACING * 2}
                 />
               </TouchableOpacity>
+               {/* icon heart  */}
               <TouchableOpacity
                 style={{
                   backgroundColor: colors.dark,
@@ -78,7 +87,7 @@ const CoffeeDetailsScreen = ({ coffee }) => {
               }}
             >
               <BlurView
-                intensity={80}
+                intensity={40}
                 tint="dark"
                 style={{
                   padding: SPACING * 2,
@@ -286,7 +295,11 @@ const CoffeeDetailsScreen = ({ coffee }) => {
         </SafeAreaView>
       </ScrollView>
       <SafeAreaView
-        style={{ flexDirection: "row", justifyContent: "space-between" }}
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          backgroundColor: colors.dark,
+        }}
       >
         <View
           style={{
